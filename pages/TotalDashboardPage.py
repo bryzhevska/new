@@ -1,18 +1,20 @@
 from selenium.webdriver.common.by import By
 from webium import Find, Finds, BasePage
-from hamcrest import *
+
+
+# from hamcrest import *
 
 
 class TotalDashboardPage(BasePage):
     path = "/"
     page_title = "Total Dashboard"
     username = Find(by=By.CLASS_NAME, value="hidden-xs")
-    down_arrow= Find(by=By.CSS_SELECTOR,value="#header > div > ul > li.dropdown.navbar-user > a > b")
-    log_out_link="Log Out"
+    down_arrow = Find(by=By.CSS_SELECTOR, value="#header > div > ul > li.dropdown.navbar-user > a > b")
+    log_out_link = "Log Out"
 
     def assert_page_is_displayed(self):
         print(self._driver.title)
-        assert_that(self._driver.title == self.page_title), "Page title %r does not correspond Total Dashboard" % str(
+        assert (self._driver.title == self.page_title), "Page title %r does not correspond Total Dashboard" % str(
             self._driver.title)
 
     def __init__(self, url, driver):
